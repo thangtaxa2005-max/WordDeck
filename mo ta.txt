@@ -1,0 +1,63 @@
+# WordDeck: ứng dụng học từ vựng tiếng Anh
+
+WordDeck là app Android giúp học từ vựng tiếng Anh theo cách tương tự Quizlet: dán một danh sách từ là có ngay bộ flashcard, sau đó học, luyện tập, chơi game và kiểm tra. Giao diện tiếng Việt, dữ liệu lưu trên máy, không cần tài khoản, không quảng cáo, chi phí vận hành 0đ.
+
+## 1. Cấu trúc nội dung
+**Thư mục → Học phần → Thẻ**
+- **Thư mục:** nhóm các học phần theo chủ đề lớn (IELTS, công việc, giao tiếp), có tên và mô tả.
+- **Học phần:** một bộ từ, có tên, mô tả, số từ và tiến độ.
+- **Thẻ:** từ hoặc cụm từ, loại từ (noun, verb…), phiên âm, nghĩa, câu ví dụ, cờ gắn sao.
+
+## 2. Tạo và quản lý thẻ
+- Thêm từng từ, dán danh sách (mỗi dòng `từ` hoặc `từ - nghĩa`) hoặc nhập file CSV/TXT.
+- **Xem trước trước khi lưu**, tự phát hiện từ trùng, sửa hàng loạt.
+- Dòng chỉ có từ thì tự điền phiên âm, loại từ, nghĩa, ví dụ qua API tra từ miễn phí và dịch offline; phần còn thiếu thì nhập tay.
+- Tạo, sửa, xóa thư mục, học phần và thẻ.
+
+## 3. Học
+- **Lật thẻ:** chạm để lật, nghe phát âm, xáo trộn thứ tự.
+- **Đảo chiều:** Anh → Việt hoặc Việt → Anh.
+- **Đánh giá 4 mức** sau mỗi thẻ: Quên / Khó / Nhớ / Dễ.
+- **Lặp lại ngắt quãng (SM-2):** từ khó ôn sớm, từ nhớ tốt giãn cách lâu hơn.
+- **Gắn sao từ khó** và chỉ học riêng các từ đã gắn sao.
+- **Ôn từ sai:** tự gom các từ hay sai thành bộ riêng.
+
+## 4. Luyện tập và kiểm tra
+- **Trắc nghiệm** 4 đáp án, **điền từ**, **nghe rồi gõ lại**.
+- **Write:** hiện nghĩa, người học gõ lại từ tiếng Anh.
+- **Đúng/sai:** hiện từ kèm một nghĩa, chọn đúng hay sai.
+- Xem đáp án ngay sau mỗi câu; từ sai xuất hiện lại trong buổi học.
+- **Bài kiểm tra tùy chọn:** chọn số câu, dạng câu hỏi, bật/tắt giới hạn thời gian.
+- **Kiểm tra tính giờ:** điểm theo tốc độ và độ chính xác.
+- Kết quả: điểm, độ chính xác, danh sách câu sai.
+
+## 5. Game ghép từ với nghĩa
+Ghép các cặp từ - nghĩa trong thời gian ngắn nhất, ghi lại thời gian hoàn thành và kỷ lục cá nhân.
+
+## 6. Duy trì thói quen
+- **Mục tiêu từ mới mỗi ngày.**
+- Thông báo nhắc học theo giờ tùy chọn.
+- Streak, số từ đã học, số từ đang nhớ tốt, biểu đồ tiến bộ theo ngày.
+
+## 7. Màn hình
+1. **Trang chủ:** bài ôn đến hạn, mục tiêu hôm nay, nút bắt đầu học.
+2. **Thư viện:** thư mục, học phần, tìm kiếm, tạo mới.
+3. **Chi tiết học phần:** danh sách thẻ, gắn sao, chọn Học / Luyện tập / Kiểm tra / Ghép cặp.
+4. **Tạo/nhập học phần** (có màn hình xem trước).
+5. **Học, kiểm tra, kết quả, game ghép.**
+6. **Thống kê và cài đặt:** giờ nhắc, mục tiêu ngày, giọng đọc, chế độ tối, **sao lưu và khôi phục** dữ liệu.
+
+## 8. Công nghệ (0đ)
+- Kotlin + Jetpack Compose.
+- Room (SQLite): `Folder`, `StudySet`, `Card` (kèm cờ sao), `Progress` (SM-2: độ khó, khoảng cách ôn, ngày ôn kế tiếp), `StudyLog` (thống kê, streak).
+- `TextToSpeech` (phát âm), WorkManager (nhắc học), dictionaryapi.dev và ML Kit Translate (tự điền nghĩa).
+
+## 9. Phạm vi và giới hạn
+- Nội dung đã lưu học được khi mất mạng; tự điền nghĩa cần mạng, phát âm offline cần giọng đọc đã cài trên máy.
+- Bản đầu dành cho một người dùng, chưa có đồng bộ đám mây, chia sẻ hay thư viện cộng đồng.
+
+## 10. Thứ tự làm
+1. **MVP:** Room, thư mục/học phần/thẻ, nhập danh sách có xem trước, lật thẻ, trắc nghiệm.
+2. Gắn sao, đảo chiều, Write, đúng/sai, ôn từ sai.
+3. SM-2 với đánh giá 4 mức, nhắc học, mục tiêu ngày, streak và thống kê.
+4. Game ghép, kiểm tra tính giờ, tự điền nghĩa bằng API, sao lưu/khôi phục.

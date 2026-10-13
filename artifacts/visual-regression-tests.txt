@@ -1,0 +1,8 @@
+
+vn.worddeck.AppTest:..
+
+Time: 18.974
+
+OK (2 tests)
+
+
